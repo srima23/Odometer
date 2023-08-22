@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Odometer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:antiquewhite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background-color:burlywood;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column; /* Change to column layout */
+            gap: 10px; /* Add gap between buttons */
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color:brown;
+            color: #fff;
+            cursor: pointer;
+            
+        }
+
+        button:hover {
+            background-color:darksalmon;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Welcome to Odometer</h1>
+        
+        <form action="" method="post">
+            <input type="hidden" name="operation" value="current">
+         
+        </form>
+        
+        
+        <div class="button-container">
+            <form action="" method="post">
+                <input type="hidden" name="operation" value="increment">
+                <button type="submit">GoNext</button>
+            </form>
+            
+            <form action="" method="post">
+                <input type="hidden" name="operation" value="decrement">
+                <button type="submit">GoPrev</button>
+            </form>
+        </div>
+<!--        <p>Current Reading: <span th:text="${current}"></span></p>-->
+<!--		<p>Next Reading:[[${increment}]] <span th:if="${increment != null && decrement == null}"></span></p>-->
+<!--		<p>Previous Reading:[[${decrement}]] <span th:if="${decrement != null && increment == null}"></span></p>-->
+        
+        <p th:if="${current != null}">Current reading: [[${current}]]</p>
+        <p th:if="${increment != null && decrement == null}">Next reading: [[${increment}]]</p>
+        <p th:if="${decrement != null && increment == null}">Previous reading: [[${decrement}]]</p>
+    </div>
+</body>
+</html>
